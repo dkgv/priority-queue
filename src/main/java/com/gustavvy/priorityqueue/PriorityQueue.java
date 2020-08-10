@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class PriorityQueue<T> {
 
-	private final Map<T, Integer> indices = new HashMap<>();
+	private final Map<T, Integer> indices;
 	private final Comparator<T> comparator;
 	private final List<T> heap;
 
@@ -18,6 +18,7 @@ public class PriorityQueue<T> {
 	}
 
 	public PriorityQueue(final int initialCapacity, final Comparator<T> comparator) {
+		this.indices = new HashMap<>(initialCapacity);
 		this.heap = new ArrayList<>(initialCapacity);
 		this.comparator = comparator;
 	}
