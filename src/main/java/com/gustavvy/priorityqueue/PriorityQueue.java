@@ -9,9 +9,9 @@ import java.util.*;
  */
 public class PriorityQueue<T> {
 
-	private final Map<T, Integer> indices;
+	private final HashMap<T, Integer> indices;
 	private final Comparator<T> comparator;
-	private final List<T> heap;
+	private final ArrayList<T> heap;
 
 	public PriorityQueue(final Comparator<T> comparator) {
 		this(11, comparator);
@@ -29,7 +29,7 @@ public class PriorityQueue<T> {
 	}
 
 	public T poll() {
-		return heap.isEmpty() ? null : removeAt(0);
+		return removeAt(0);
 	}
 
 	private T removeAt(final int index) {
@@ -62,7 +62,7 @@ public class PriorityQueue<T> {
 	}
 
 	public void remove(final T entry) {
-		if (heap.isEmpty() || !indices.containsKey(entry)) {
+		if (!indices.containsKey(entry)) {
 			return;
 		}
 
@@ -99,7 +99,7 @@ public class PriorityQueue<T> {
 	}
 
 	public T peek() {
-		return heap.isEmpty() ? null : heap.get(0);
+		return heap.get(0);
 	}
 
 	public boolean contains(final T t) {
@@ -119,8 +119,9 @@ public class PriorityQueue<T> {
 	}
 
 	private void minHeapify(final int index) {
-		final int left = leftChild(index);
-		final int right = rightChild(index);
+		final int shift = index << 1;
+		final int left = shift + 1;
+		final int right = shift + 2;
 		final int n = heap.size();
 
 		int min = index;
@@ -142,14 +143,6 @@ public class PriorityQueue<T> {
 
 	private int cmp(final T one, final T two) {
 		return comparator.compare(one, two);
-	}
-
-	private int leftChild(final int index) {
-		return (2 * index) + 1;
-	}
-
-	private int rightChild(final int index) {
-		return (2 * index) + 2;
 	}
 
 	private int parentOf(final int index) {
