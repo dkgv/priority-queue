@@ -1,10 +1,11 @@
 # priority-queue
 
-A Java Priority Queue implementation with O(log n) time complexity for remove(T).
+A Java Priority Queue implementation with O(log n) time complexity for `remove(T)`.
 
 ## Example
+
 ```java
-    PriorityQueue<Integer> queue = new PriorityQueue<>();
+    PriorityQueue<Integer> queue = new PriorityQueue<>(Integer::compareTo);
     queue.offer(1);
     queue.offer(2);
 
