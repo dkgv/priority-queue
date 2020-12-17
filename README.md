@@ -27,42 +27,21 @@ A Java Priority Queue implementation with O(log n) time complexity for `remove(T
 ## Benchmarks
 The following benchmarks were performed on a MBP 2013 with JMH using the benchmark suite found in the `benchmarks` directory. Score unit is ms/op.
 
-### Java
 ```
-Benchmark      (distribution)     (n)  Mode      Score
-JavaPQ.remove          RANDOM       1    ss      0.025
-JavaPQ.remove          RANDOM     100    ss      0.394
-JavaPQ.remove          RANDOM    1000    ss      5.266
-JavaPQ.remove          RANDOM   10000    ss     48.121
-JavaPQ.remove          RANDOM  100000    ss   3891.546
-JavaPQ.remove      INCREASING       1    ss      0.031
-JavaPQ.remove      INCREASING     100    ss      0.631
-JavaPQ.remove      INCREASING    1000    ss      4.525
-JavaPQ.remove      INCREASING   10000    ss      9.039
-JavaPQ.remove      INCREASING  100000    ss     61.324
-JavaPQ.remove      DECREASING       1    ss      0.029
-JavaPQ.remove      DECREASING     100    ss      0.444
-JavaPQ.remove      DECREASING    1000    ss      2.013
-JavaPQ.remove      DECREASING   10000    ss      5.803
-JavaPQ.remove      DECREASING  100000    ss     49.606
-```
-
-### This
-```
-Benchmark     (distribution)     (n)  Mode     Score
-OurPQ.remove          RANDOM       1    ss     0.022 <----
-OurPQ.remove          RANDOM     100    ss     0.501
-OurPQ.remove          RANDOM    1000    ss     4.209 <----
-OurPQ.remove          RANDOM   10000    ss    13.317 <----
-OurPQ.remove          RANDOM  100000    ss    69.880 <----
-OurPQ.remove      INCREASING       1    ss     0.039
-OurPQ.remove      INCREASING     100    ss     2.278
-OurPQ.remove      INCREASING    1000    ss    16.019
-OurPQ.remove      INCREASING   10000    ss    42.658
-OurPQ.remove      INCREASING  100000    ss   140.316
-OurPQ.remove      DECREASING       1    ss     0.036
-OurPQ.remove      DECREASING     100    ss     1.731
-OurPQ.remove      DECREASING    1000    ss     8.465
-OurPQ.remove      DECREASING   10000    ss    34.368
-OurPQ.remove      DECREASING  100000    ss   144.530
+(item order)      (n)  Mode   Java.remove   This.remove
+      RANDOM        1    ss         0.025         0.022 <----
+      RANDOM      100    ss         0.394         0.501
+      RANDOM     1000    ss         5.266         4.209 <----
+      RANDOM    10000    ss        48.121        13.317 <----
+      RANDOM   100000    ss      3891.546        69.880 <----
+  INCREASING        1    ss         0.031         0.039
+  INCREASING      100    ss         0.631         2.278
+  INCREASING     1000    ss         4.525        16.019
+  INCREASING    10000    ss         9.039        42.658
+  INCREASING   100000    ss        61.324       140.316
+  DECREASING        1    ss         0.029         0.036
+  DECREASING      100    ss         0.444         1.731
+  DECREASING     1000    ss         2.013         8.465
+  DECREASING    10000    ss         5.803        34.368
+  DECREASING   100000    ss        49.606       144.530
 ```
