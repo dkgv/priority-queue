@@ -112,7 +112,7 @@ public class PriorityQueue<T> {
 
 	private void siphonUp(int index) {
 		// Continue swapping until we reach the root as long as comparison with our parent is met
-		while (index > 0 && cmp(heap.get(index), heap.get(parentOf(index))) <= 0) {
+		while (index > 0 && cmp(heap.get(index), heap.get(parentOf(index))) < 0) {
 			swap(index, parentOf(index));
 			index = parentOf(index);
 		}
